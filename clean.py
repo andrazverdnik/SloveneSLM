@@ -6,7 +6,7 @@ cleanCorpusPath = "cleanCorpus.txt"
 corpus = open(corpusPath, "r")
 lines = corpus.readlines()
 newLines = []
-table = str.maketrans('', '', string.digits + string.punctuation + "'…`~’‘»«–‹›‚“”")
+table = str.maketrans('', '', string.digits + string.punctuation + "'…`~’‘»«–‹›‚“”•§„‛·—¨❏❖")
 
 bar = ShadyBar("Cleaning", max=len(lines))
 for line in lines:

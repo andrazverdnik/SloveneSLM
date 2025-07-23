@@ -11,7 +11,7 @@ supabase: Client = create_client(url, key)
 corpus = open(corpusPath, "r")
 text = corpus.readlines()
 corpus.close()
-mainN = 3
+mainN = 4
 
 
 def getNGram(N, text):
@@ -32,7 +32,7 @@ def getNGram(N, text):
 def clearTable(N):
     while True:
         try:
-            supabase.table(f"{N}gram").delete().neq("count", -1).execute()
+            supabase.table(f"{N}gram").delete().neq("count", 0).execute()
             break
         except:
             continue
@@ -85,7 +85,7 @@ for i in range(mainN):
     currentN = i+1
     counter = getNGram(currentN, text)
     startWordsCounted = listStartWordsFromCount(counter, currentN)
-    clearTable(currentN)
+    # clearTable(currentN)
     chunks = splitCountIntoChunks(counter, rowsPerChunk=2500, N=currentN, countedStartWords=startWordsCounted)
     pushChunksIntoSupabase(currentN, chunks)
 
