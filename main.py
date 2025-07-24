@@ -34,10 +34,12 @@ def applyTemperature(data, temperature):
     return newDataScaled / sumScaledData
 
 def completeText(text, length, temperature):
+    print(text, end="")
     for i in range(length):
         newWord = f" {nextWord(text, temperature)}"
         text += newWord
-        print(newWord)
+        print(newWord, end = '', flush=True)
+    print()
     return text
 
 
