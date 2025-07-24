@@ -11,7 +11,7 @@ supabase: Client = create_client(url, key)
 corpus = open(corpusPath, "r")
 text = corpus.readlines()
 corpus.close()
-mainN = 5
+mainN = 10
 
 
 def getNGram(N, text):

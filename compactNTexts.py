@@ -1,7 +1,7 @@
 import os
 
 corpusTxtFolderPath = "ccGigafidaV1_0-text"
-numTexts = 4200
+numTexts = 10000
 out = open("corpus.txt", "w")
 
 for n, filename in enumerate(os.listdir(corpusTxtFolderPath)):

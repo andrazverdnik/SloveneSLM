@@ -1,7 +1,7 @@
 from supabase import create_client, Client
 import numpy as np
 
-maxN = 4
+maxN = 9
 url = "http://127.0.0.1:54321"
 key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU"
 supabase: Client = create_client(url, key)
@@ -35,8 +35,14 @@ def applyTemperature(data, temperature):
 
 def completeText(text, length, temperature):
     for i in range(length):
-        text += f" {nextWord(text, temperature)}"
+        newWord = f" {nextWord(text, temperature)}"
+        text += newWord
+        print(newWord)
     return text
 
 
-print(completeText("zakaj je treba posodo po jedi pomiti in", 10, 0.1))
+while True:
+    temperature = float(input("Temperatura!: "))
+    length = int(input("Dolžina!: "))
+    text = input("Text: \n")
+    completeText(text, length, temperature)
