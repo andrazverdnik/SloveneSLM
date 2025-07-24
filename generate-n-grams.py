@@ -11,7 +11,7 @@ supabase: Client = create_client(url, key)
 corpus = open(corpusPath, "r")
 text = corpus.readlines()
 corpus.close()
-mainN = 4
+mainN = 5
 
 
 def getNGram(N, text):
@@ -32,7 +32,7 @@ def getNGram(N, text):
 def clearTable(N):
     while True:
         try:
-            supabase.table(f"{N}gram").delete().neq("count", 0).execute()
+            supabase.rpc("clear_table", {"table_name": f"{N}gram"}).execute()
             break
         except:
             continue
